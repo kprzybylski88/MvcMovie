@@ -28,7 +28,11 @@ namespace MvcMovie
             services.AddControllersWithViews();
 
             services.AddDbContext<MvcMovieContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContext")));
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContext"));
+                options.EnableSensitiveDataLogging();
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
